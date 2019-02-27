@@ -23,9 +23,12 @@ const Room = props => {
       <div className="room-detail">
         <div className="">
           <h4>
-            £{props.roomType.rentPerMonth}
-            <span className="bar" />
-            {props.roomType.roomTitle}
+            {" "}
+            <Link to={"/listings/" + props.roomType.uuid}>
+              £{props.roomType.rentPerMonth}
+              <span className="bar" />
+              {props.roomType.roomTitle}
+            </Link>
           </h4>
         </div>
         <div>

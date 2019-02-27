@@ -24,7 +24,6 @@ class Listing extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   let uuid = ownProps.match.params.uuid;
-  console.log(state.results.find(room => room.uuid === uuid));
   return {
     room: state.results.find(room => room.uuid === uuid)
   };

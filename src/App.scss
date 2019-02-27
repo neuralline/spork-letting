@@ -11,9 +11,14 @@ img {
 a {
   border-style: none;
   border: 0;
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  color: none;
+  text-decoration: none;
 }
 h4 {
-  padding: 2px 6px;
   font-size: 16px;
   font-weight: 700;
   float: left;
@@ -30,8 +35,19 @@ html {
   margin: 0;
 }
 
+@font-face {
+  font-family: "museo-sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/MuseoSans_500.otf"); /* IE9 Compat Modes */
+  src: local("Open Sans"), local("OpenSans"), url("./fonts/MuseoSans_500.otf");
+}
+
 body {
   font-size: 12px;
+  font-family: museo-sans, sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }
 
 .room {
