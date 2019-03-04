@@ -1,3 +1,7 @@
+$primary-color: #fe5956;
+$secondary-color: #fff;
+$default-color: #000;
+
 ul,
 li {
   list-style: none;
@@ -15,7 +19,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: none;
+  color: $primary-color;
   text-decoration: none;
 }
 h4 {
@@ -45,9 +49,10 @@ html {
 
 body {
   font-size: 12px;
-  font-family: museo-sans, sans-serif;
+  font-family: "museo-sans", sans-serif;
   font-style: normal;
   font-weight: 100;
+  color: $default-color;
 }
 
 .room {
@@ -56,9 +61,7 @@ body {
     display: block;
     overflow: hidden;
     border-radius: 10px;
-    img {
-      border-radius: 10px;
-    }
+    min-height: 170.2px;
   }
   .room-detail {
     margin: 15px 0;
@@ -66,68 +69,169 @@ body {
   }
 }
 
-.transition {
-  transition: all 0.6s ease;
-  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.room-mates-ul {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  white-space: nowrap;
-  width: 100%;
-  height: 70px;
-  li {
-    border-radius: 90px;
-    overflow: hidden;
-    height: 60px;
-    width: 60px;
-    float: right;
-    margin-left: -50px;
-    cursor: pointer;
-    border: 2px solid #ffffff;
-  }
-}
-.bar {
-  margin: 0 10px;
-  height: 14px;
-  display: inline-block;
-  width: 1px;
-  border: 1px solid rgba(155, 155, 155, 0.5);
-}
-.featured:hover .room-mates-ul li {
-  margin-left: 0;
-}
 .featured:hover {
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
 }
+
+.room-mates-ul {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  height: 70px;
+  li {
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 90px;
+    border: 2px solid #ffffff;
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin-right: -30px;
+    cursor: pointer;
+  }
+  :last-child {
+    margin-right: 0;
+  }
+}
+.room-mates-ul:hover li {
+  margin-right: 0;
+}
+
+.room-mate-name {
+  margin-top: 10px;
+  color: $secondary-color;
+}
+.room-mates-cover-ul > li:hover .room-mate-name {
+  color: $primary-color;
+}
+
+.room-mate-avatar {
+  height: 90px;
+  width: 90px;
+  border-radius: 90px;
+  border: 2px solid #ffffff;
+}
+.big {
+  .room-mate-avatar {
+    height: 140px;
+    width: 140px;
+  }
+  .room-mate-name {
+    margin-top: 25px;
+    font-size: 26px;
+  }
+}
+.small {
+  .room-mate-name {
+    margin-top: 5px;
+  }
+  .room-mate-avatar {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.room-mates-cover {
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.room-mates-cover-ul {
+  background-color: #000;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 33%;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+  margin-right: 0;
+  li {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    display: inline;
+    flex-basis: 33%;
+    cursor: pointer;
+    margin: 5px auto;
+  }
+
+  a {
+    color: $secondary-color;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+}
+
+.onn {
+  margin-right: 0;
+}
+
+.off {
+  margin-right: -100%;
+}
+
+.bar {
+  margin: 0 10px;
+  height: 12px;
+  display: inline-block;
+  width: 1px;
+  border: 1px solid rgba(155, 155, 155, 0.5);
+}
+
+.transition {
+  transition: all 0.6s ease;
+  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
 .area {
   position: relative;
 }
 
-.room-mates-cover {
-  width: 100%;
-  position: absolute;
-  height: 100%;
-  li {
-    display: inline-block;
-    border-radius: 90px;
-    overflow: hidden;
-    height: 60px;
-    width: 60px;
-    cursor: pointer;
-    border: 1px solid #ffffff;
-  }
-}
-
 .transport-type {
   margin: 0 10px;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
 }
 
-@media (max-width: 480px) {
+.back-button {
+  height: 40px;
+  width: 60px;
+  color: $secondary-color;
+  font-size: 28px;
+  border-radius: 0 10px 0 10px;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  background-color: $primary-color;
+}
+
+@media (max-width: 770px) {
+  .big {
+    .room-mate-avatar {
+      height: 60px;
+      width: 60px;
+    }
+    .room-mate-name {
+      margin-top: 5px;
+      font-size: 18px;
+    }
+  }
 }

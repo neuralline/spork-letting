@@ -4,17 +4,22 @@ import { connect } from "react-redux";
 
 class RoomList extends Component {
   render() {
+    //handle connection error
+    const connectionError = this.props.connectionError
+      ? this.props.errorMessage
+      : this.props.loadingMessage;
+
     const results = this.props.results;
-    const roomList = this.props.results.length ? (
+    const roomList = results.length ? (
       results.map(room => {
         return (
-          <div className="col-md-3 col-sm-4 col-xs-12 ">
-            <Room key={room.uuid} roomType={room} />
+          <div key={room.uuid} className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <Room roomType={room} coverStyle="small" />
           </div>
         );
       })
     ) : (
-      <div className="col-md-4">Searching for available rooms...</div>
+      <div className="col-md-4">{connectionError}</div>
     );
     return (
       <div className="container">
@@ -29,7 +34,10 @@ class RoomList extends Component {
 
 const mapStateToProps = state => {
   return {
-    results: state.results
+    results: state.results,
+    connectionError: state.connectionError,
+    errorMessage: state.errorMessage,
+    loadingMessage: state.loadingMessage
   };
 };
 

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import RoomMatesCover from "./room-mates/roommates-cover";
+import React from "react";
 import RoomMatesList from "./room-mates/roommates-list";
 import TransportType from "./transport-type/transport-type";
 import { Link } from "react-router-dom";
@@ -16,14 +15,14 @@ const Room = props => {
             className="featured-image"
           />
         </Link>
-
-        <RoomMatesList roommates={props.roomType.roommates} />
-        <RoomMatesCover roommates={props.roomType.roommates} />
+        <RoomMatesList
+          roommates={props.roomType.roommates}
+          coverStyle={props.coverStyle}
+        />
       </div>
       <div className="room-detail">
         <div className="">
           <h4>
-            {" "}
             <Link to={"/listings/" + props.roomType.uuid}>
               £{props.roomType.rentPerMonth}
               <span className="bar" />
@@ -38,7 +37,6 @@ const Room = props => {
             <img src={walk} alt="walk" className="transport-type" />
           </span>
           <span className="area">{props.roomType.transport.distance.time}</span>
-
           <span className="area">
             <TransportType type={props.roomType.transport.distance.type} />
           </span>

@@ -13,7 +13,11 @@ class Listing extends Component {
         <div>
           <div className="row">
             <div className="col-12 ">
-              <Room key={this.props.room.uuid} roomType={this.props.room} />
+              <Room
+                key={this.props.room.uuid}
+                roomType={this.props.room}
+                coverStyle="big"
+              />
             </div>
           </div>
         </div>

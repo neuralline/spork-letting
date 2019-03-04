@@ -5,9 +5,12 @@ import Listing from "./components/listing";
 import Profile from "./components/profile/profile";
 import "./App.scss";
 import { connect } from "react-redux";
-import getRoomList from "./store/get-room-list-action";
+import getRoomListAction from "./store/actions/get-room-list-action";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getRoomList();
+  }
   render() {
     return (
       <BrowserRouter>
@@ -23,7 +26,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getRoomList: data => dispatch(getRoomList(data))
+    getRoomList: data => dispatch(getRoomListAction(data))
   };
 };
 
